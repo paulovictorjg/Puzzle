@@ -14,6 +14,23 @@
         <div class="child1">
             <div class="titleAndButton">
                 <h1>Puzzle</h1>
+                <!-- Bloco de seleção de dificuldade -->
+                <div id="difficulty" class="difficulty">
+                    selecione a duficuldade:
+                    <br>
+                    <input type="radio" name="game-difficulty" id="game-difficulty-img" value='4' checked>
+                    <label for="game-difficulty-one">4x4 (imagem)</label>
+                    <br>
+                    <input type="radio" name="game-difficulty" id="game-difficulty-one" value='4'>
+                    <label for="game-difficulty-one">4x4 (numeros)</label>
+                    <br>
+                    <input type="radio" name="game-difficulty" id="game-difficulty-two" value='5'>
+                    <label for="game-difficulty-two">5x5 (numeros)</label>
+                    <br>
+                    <input type="radio" name="game-difficulty" id="game-difficulty-three" value='6'>
+                    <label for="game-difficulty-three">6x6 (numeros)</label>
+                </div>
+
                 <button id="game" class="game">Novo Jogo</button>
                 <br>
                 <br>
@@ -26,24 +43,16 @@
                 clicks: <span class="move-text"></span>
             </div>
 
-            <!-- Bloco de seleção de dificuldade -->
-            <div id="difficulty" class="difficulty">
-                selecione a duficuldade:
-                <br>
-                <input type="radio" name="game-difficulty" id="game-difficulty-one" value='4' checked>
-                <label for="game-difficulty-one">4x4 (classico)</label>
-                <br>
-                <input type="radio" name="game-difficulty" id="game-difficulty-two" value='5'>
-                <label for="game-difficulty-two">5x5</label>
-                <br>
-                <input type="radio" name="game-difficulty" id="game-difficulty-three" value='6'>
-                <label for="game-difficulty-three">6x6</label>
-            </div>
         </div>
         <div class="child2">
             <!-- Jogo -->
-            <div class="field" id="field"></div>
+            <div class="field" id="field">
+                <div id="full-image-container" class="img-ref">
+                    <img id="full-image" src="/img/4x4img.jpg" alt="Imagem completa" style="display: none;">
+                </div>
+            </div>
         </div>
+
     </div>
 
 </body>
