@@ -33,13 +33,9 @@ function startGame(dif) {
   const numbers = [...Array(dif * dif - 1).keys()].sort(
     () => Math.random() - 0.5
   );
-  const fullImage = document.getElementById('full-image');
-  if (dif == 4 && document.getElementById('game-difficulty-img').checked) {
-    fullImage.src = './img/4x4img.jpg';
-    fullImage.style.display = 'block';
-  } else {
-    fullImage.style.display = 'none';
-  }
+  // Obtém a imagem selecionada
+  const imageSelection = document.getElementById('image-selection');
+  const selectedImage = 'url("./img/' + imageSelection.value + '")';
 
   for (let i = 0; i <= dif * dif - 2; i++) {
     // Cria uma tag
@@ -47,17 +43,17 @@ function startGame(dif) {
     const value = numbers[i] + 1;
     cell.className = 'cell';
     // Verifique se a opção selecionada é "4x4 (imagem)"
-     if (dif == 4 && document.getElementById('game-difficulty-img').checked) {
-       // Calcule a posição da imagem de fundo
-       const x = ((value - 1) % dif) * cellSize;
-       const y = Math.floor((value - 1) / dif) * cellSize;
-       cell.style.backgroundImage = image;
-       cell.style.backgroundPositionX = `-${x}px`;
-       cell.style.backgroundPositionY = `-${y}px`;
-     } else {
-       // Escreve o valor na célula
-       cell.innerHTML = value;
-     }
+    if (dif == 4 && document.getElementById('game-difficulty-img').checked) {
+      // Calcule a posição da imagem de fundo
+      const x = ((value - 1) % dif) * cellSize;
+      const y = Math.floor((value - 1) / dif) * cellSize;
+      cell.style.backgroundImage = selectedImage;
+      cell.style.backgroundPositionX = `-${x}px`;
+      cell.style.backgroundPositionY = `-${y}px`;
+    } else {
+      // Escreve o valor na célula
+      cell.innerHTML = value;
+    }
     // Posição na linha
     const left = i % dif;
     // Posição na coluna
