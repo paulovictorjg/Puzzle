@@ -5,7 +5,7 @@ let moveCounter = 0;
 let gameTime = 0;
 
 // URL da imagem
-const image = 'url("./img/4x4img.jpg")';
+const image = 'url("./img/4x4img.png")';
 
 // Acionado quando o botão de novo jogo é clicado
 function start() {
@@ -33,7 +33,6 @@ function startGame(dif) {
   const numbers = [...Array(dif * dif - 1).keys()].sort(
     () => Math.random() - 0.5
   );
-  // Obtém a imagem selecionada
   const imageSelection = document.getElementById('image-selection');
   const selectedImage = 'url("./img/' + imageSelection.value + '")';
 
@@ -44,6 +43,7 @@ function startGame(dif) {
     cell.className = 'cell';
     // Verifique se a opção selecionada é "4x4 (imagem)"
     if (dif == 4 && document.getElementById('game-difficulty-img').checked) {
+      document.getElementById('full-image-4x4').style.display = 'block';
       // Calcule a posição da imagem de fundo
       const x = ((value - 1) % dif) * cellSize;
       const y = Math.floor((value - 1) / dif) * cellSize;
@@ -54,6 +54,7 @@ function startGame(dif) {
       // Escreve o valor na célula
       cell.innerHTML = value;
     }
+
     // Posição na linha
     const left = i % dif;
     // Posição na coluna
@@ -153,74 +154,3 @@ function startResults() {
     timeContainer.innerHTML = '' + ++gameTime;
   }, 1000);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// var numPecas = 16;
-// var tamanhoPeca = 100;
-// var container = document.getElementById('container');
-
-// for (var i = 0; i < numPecas; i++) {
-//   var peca = document.createElement('div');
-//   peca.className = 'peca';
-//   peca.id = 'peca' + i;
-//   peca.style.width = tamanhoPeca + 'px';
-//   peca.style.height = tamanhoPeca + 'px';
-//   peca.style.backgroundImage =
-//     'url(https://www.bing.com/az/hprichbg/rb/CherryBlossom_EN-US13180324094_1920x1080.jpg)';
-//   peca.style.backgroundSize = tamanhoPeca * Math.sqrt(numPecas) + 'px';
-//   peca.style.backgroundPosition =
-//     -tamanhoPeca * (i % Math.sqrt(numPecas)) +
-//     'px ' +
-//     -tamanhoPeca * Math.floor(i / Math.sqrt(numPecas)) +
-//     'px';
-//   container.appendChild(peca);
-// }
-
-// function embaralhar() {
-//   var pecas = document.getElementsByClassName('peca');
-//   var numPecas = pecas.length;
-
-//   for (var i = numPecas - 1; i > 0; i--) {
-//     var j = Math.floor(Math.random() * (i + 1));
-//     var tempX = pecas[i].style.left;
-//     var tempY = pecas[i].style.top;
-//     pecas[i].style.left = pecas[j].style.left;
-//     pecas[i].style.top = pecas[j].style.top;
-//     pecas[j].style.left = tempX;
-//     pecas[j].style.top = tempY;
-//   }
-// }
-
-// var numPecasCorretas = 0;
-
-// function verificar() {
-//   var pecas = document.getElementsByClassName('peca');
-
-//   for (var i = 0; i < numPecas; i++) {
-//     var peca = pecas[i];
-//     var posicaoX = parseInt(peca.style.left);
-//     var posicaoY = parseInt(peca.style.top);
-//     var posicaoCorretaX = tamanhoPeca * (i % Math.sqrt(numPecas));
-//     var posicaoCorretaY = tamanhoPeca * Math.floor(i / Math.sqrt(numPecas));
-
-//     if (posicaoX === posicaoCorretaX && posicaoY === posicaoCorretaY) {
-//       numPecasCorretas++;
-//     }
-//   }
-
-//   if (numPecasCorretas === numPecas) {
-//     alert('Parabéns! Você resolveu o quebra-cabeça!');
-//   }
-
-//   numPecasCorretas = 0;
-// }

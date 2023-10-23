@@ -19,12 +19,12 @@
                 <div id="difficulty" class="difficulty">
                     selecione a duficuldade:
                     <br>
-                    <input type="radio" name="game-difficulty" id="game-difficulty-img" value='4'>
+                    <input type="radio" name="game-difficulty" id="game-difficulty-img" value='4' checked>
                     <label for="game-difficulty-one">Imagem</label>
                     <select id="image-selection">
-                        <option value="4x4img.png">Imagem 4x4</option>
-                        <option value="5x5img.png">Imagem 5x5</option>
-                        <option value="6x6img.png">Imagem 6x6</option>
+                        <option value="4x4img.png">Imagem 1</option>
+                        <option value="5x5img.png">Imagem 2</option>
+                        <option value="6x6img.png">Imagem 3</option>
                     </select>
                     <br>
                     <input type="radio" name="game-difficulty" id="game-difficulty-one" value='4'>
@@ -54,7 +54,10 @@
             <!-- Jogo -->
             <div class="field" id="field">
                 <div id="full-image-container" class="img-ref">
-                    <img id="full-image" src="/img/4x4img.jpg" alt="Imagem completa" style="display: none;">
+                    <img id="full-image-4x4" src="/img/4x4img.png" alt="Imagem completa" 
+                    style="display: none;">
+                    <img id="full-image-5x5" src="/img/5x5img.png" alt="Imagem completa" style="display: none;">
+                    <img id="full-image-6x6" src="/img/6x6img.png" alt="Imagem completa" style="display: none;">
                 </div>
             </div>
         </div>
