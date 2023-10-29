@@ -10,21 +10,22 @@
 </head>
 
 <body>
-
     <div class="parent">
         <div class="child1">
             <div class="titleAndButton">
                 <h1>Puzzle</h1>
-                <!-- Bloco de seleção de dificuldade -->
                 <div id="difficulty" class="difficulty">
                     selecione a duficuldade:
                     <br>
                     <input type="radio" name="game-difficulty" id="game-difficulty-img" value='4' checked>
                     <label for="game-difficulty-one">Imagem</label>
                     <select id="image-selection">
-                        <option value="4x4img.png">Imagem 1</option>
-                        <option value="5x5img.png">Imagem 2</option>
-                        <option value="6x6img.png">Imagem 3</option>
+                        <option value="img-1.png">Imagem 1</option>
+                        <option value="img-2.png">Imagem 2</option>
+                        <option value="img-3.png">Imagem 3</option>
+                        <option value="img-4.png">Imagem 4</option>
+                        <option value="img-5.png">Imagem 5</option>
+                        <option value="img-6.png">Imagem 6</option>
                     </select>
                     <br>
                     <input type="radio" name="game-difficulty" id="game-difficulty-one" value='4'>
@@ -36,28 +37,26 @@
                     <input type="radio" name="game-difficulty" id="game-difficulty-three" value='6'>
                     <label for="game-difficulty-three">6x6 (numeros)</label>
                 </div>
-
                 <button id="game" class="game">Novo Jogo</button>
                 <br>
                 <br>
             </div>
-
-            <!-- Bloco de resultados -->
             <div id="result" class="result">
                 Tempo: <span class="time-text"></span>
                 <br>
                 clicks: <span class="move-text"></span>
             </div>
-
         </div>
         <div class="child2">
             <!-- Jogo -->
             <div class="field" id="field">
                 <div id="full-image-container" class="img-ref">
-                    <img id="full-image-4x4" src="/img/4x4img.png" alt="Imagem completa" 
-                    style="display: none;">
-                    <img id="full-image-5x5" src="/img/5x5img.png" alt="Imagem completa" style="display: none;">
-                    <img id="full-image-6x6" src="/img/6x6img.png" alt="Imagem completa" style="display: none;">
+                    <img id="img-1.png" src="/img/img-1.png" alt="Imagem completa" style="display: none;">
+                    <img id="img-2.png" src="/img/img-2.png" alt="Imagem completa" style="display: none;">
+                    <img id="img-3.png" src="/img/img-3.png" alt="Imagem completa" style="display: none;">
+                    <img id="img-4.png" src="/img/img-4.png" alt="Imagem completa" style="display: none;">
+                    <img id="img-5.png" src="/img/img-5.png" alt="Imagem completa" style="display: none;">
+                    <img id="img-6.png" src="/img/img-6.png" alt="Imagem completa" style="display: none;">
                 </div>
             </div>
         </div>
@@ -66,3 +65,4 @@
 </body>
 
 </html>
+
