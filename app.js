@@ -5,7 +5,12 @@ let moveCounter = 0;
 let gameTime = 0;
 
 function start() {
-  let dif = document.querySelector('[name="game-difficulty"]:checked').value;
+  let dif;
+  if (document.getElementById('game-difficulty-img').checked) {
+    dif = document.getElementById('game-difficulty-img').value;
+  } else if (document.getElementById('game-difficulty-num').checked) {
+    dif = document.getElementById('number-selection').value;
+  }
   if (newButtonClicked) {
     startGame(dif);
     field.style.display = 'block';
@@ -14,7 +19,8 @@ function start() {
     newGameButton.innerHTML = 'Restart';
     difficulty.style.display = 'none';
     result.style.display = 'block';
-    // document.getElementById('dicas').style.display = 'none'; esconde a div dicas quando inicia o game
+    document.getElementById('slide-titulo').style.display = 'none';
+    document.getElementById('slideshow-container').style.display = 'none';
   } else {
     window.location.reload();
   }
@@ -112,4 +118,21 @@ function startResults() {
   const gameInterval = setInterval(() => {
     timeContainer.innerHTML = '' + ++gameTime;
   }, 1000);
+}
+
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName('mySlides');
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = 'none';
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1;
+  }
+  slides[slideIndex - 1].style.display = 'block';
+  setTimeout(showSlides, 3000);
 }
