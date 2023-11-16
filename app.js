@@ -26,6 +26,7 @@ function start() {
   }
 }
 function startGame(dif) {
+document.getElementById('full-image-container').style.display = 'block';
   const field = document.querySelector('.field');
   const cellSize = 100;
   const cells = [];
