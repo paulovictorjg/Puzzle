@@ -110,7 +110,6 @@ function startGame(dif) {
   }
 }
 function startResults() {
-  document.getElementById('result').style.display = 'none';
   const moveContainer = document.querySelector('.move-text');
   const timeContainer = document.querySelector('.time-text');
   moveContainer.innerHTML = '' + moveCounter;
@@ -121,6 +120,8 @@ function startResults() {
   const gameInterval = setInterval(() => {
     timeContainer.innerHTML = '' + ++gameTime;
   }, 1000);
+  document.getElementById('child1').style.display = 'none';
+  document.getElementById('game').style.display = 'block';
 }
 
 let slideIndex = 0;
