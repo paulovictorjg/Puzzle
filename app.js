@@ -3,7 +3,6 @@ let newButtonClicked = true;
 newGameButton.onclick = start;
 let moveCounter = 0;
 let gameTime = 0;
-let dif;
 document.getElementById('full-image-container').style.display = 'none';
 
 function start() {
@@ -21,16 +20,15 @@ function start() {
     newGameButton.innerHTML = 'Restart';
     difficulty.style.display = 'none';
     result.style.display = 'block';
-    document.getElementById('slide').style.display = 'none';
-    document.getElementById('child1').style.display = 'none';
-    document.getElementById('result').style.display = 'block';
-
+    document.getElementById('slide-titulo').style.display = 'none';
+    document.getElementById('slideshow-container').style.display = 'none';
   } else {
     window.location.reload();
   }
 }
 function startGame(dif) {
   document.getElementById('full-image-container').style.display = 'block';
+  document.getElementById('puzzle').style.display = 'none';
   const field = document.querySelector('.field');
   const cellSize = 100;
   const cells = [];
@@ -44,11 +42,10 @@ function startGame(dif) {
     const value = numbers[i] + 1;
     cell.className = 'cell';
     if (dif == 4 && document.getElementById('game-difficulty-img').checked) {
-      let selectedImageId = '' + imageSelection.value; // Cria o ID dinâmico
-      let selectedImageElement = document.getElementById(selectedImageId); // Obtém o elemento com o ID
+      let selectedImageId = '' + imageSelection.value;
+      let selectedImageElement = document.getElementById(selectedImageId);
       if (selectedImageElement) {
-        // Verifica se o elemento existe
-        selectedImageElement.style.display = 'block'; // Aplica display: block
+        selectedImageElement.style.display = 'block';
       } else {
         console.log('Elemento não encontrado: ' + selectedImageId);
       }
@@ -113,6 +110,7 @@ function startGame(dif) {
   }
 }
 function startResults() {
+  document.getElementById('result').style.display = 'none';
   const moveContainer = document.querySelector('.move-text');
   const timeContainer = document.querySelector('.time-text');
   moveContainer.innerHTML = '' + moveCounter;
@@ -141,71 +139,3 @@ function showSlides() {
   slides[slideIndex - 1].style.display = 'block';
   setTimeout(showSlides, 3000);
 }
-function encontrarPosicaoCorreta(valor) {
-  // Percorra todas as células do quebra-cabeça resolvido
-  for (let i = 0; i < dif * dif; i++) {
-    if (cells[i].value === valor) {
-      return i;
-    }
-  }
-  return -1;
-}
-
-function moverParaPosicaoCorreta(index, posicaoCorreta) {
-  // Troque a peça na posição 'index' com a peça na 'posicaoCorreta'
-  const temp = cells[index];
-  cells[index] = cells[posicaoCorreta];
-  cells[posicaoCorreta] = temp;
-
-  // Atualize a posição das peças no DOM
-  cells[index].element.style.left = `${cells[index].left * cellSize}px`;
-  cells[index].element.style.top = `${cells[index].top * cellSize}px`;
-  cells[posicaoCorreta].element.style.left = `${
-    cells[posicaoCorreta].left * cellSize
-  }px`;
-  cells[posicaoCorreta].element.style.top = `${
-    cells[posicaoCorreta].top * cellSize
-  }px`;
-}
-
-function encontrarPosicaoCorreta(valor) {
-  // Percorra todas as células do quebra-cabeça resolvido
-  for (let i = 0; i < dif * dif; i++) {
-    if (cells[i].value === valor) {
-      return i;
-    }
-  }
-  return -1;
-}
-
-function moverParaPosicaoCorreta(index, posicaoCorreta) {
-  // Troque a peça na posição 'index' com a peça na 'posicaoCorreta'
-  const temp = cells[index];
-  cells[index] = cells[posicaoCorreta];
-  cells[posicaoCorreta] = temp;
-
-  // Atualize a posição das peças no DOM
-  cells[index].element.style.left = `${cells[index].left * cellSize}px`;
-  cells[index].element.style.top = `${cells[index].top * cellSize}px`;
-  cells[posicaoCorreta].element.style.left = `${
-    cells[posicaoCorreta].left * cellSize
-  }px`;
-  cells[posicaoCorreta].element.style.top = `${
-    cells[posicaoCorreta].top * cellSize
-  }px`;
-}
-
-function resolverAutomaticamente() {
-  let dif;
-  // Percorra todas as peças do quebra-cabeça
-  for (let i = 0; i < dif * dif; i++) {
-    // Encontre a posição correta da peça atual no quebra-cabeça resolvido
-    const posicaoCorreta = encontrarPosicaoCorreta(cells[i].value);
-
-    // Mova a peça para a posição correta
-    moverParaPosicaoCorreta(i, posicaoCorreta);
-  }
-}
-
-let resolverButton = document.getElementById('resolver');
-resolverButton.onclick = resolverAutomaticamente;

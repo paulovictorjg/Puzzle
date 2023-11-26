@@ -11,13 +11,11 @@
 
 <body>
     <div class="parent">
-
-        <!-- menu do jogo -->
-        <div class="child1" id="child1">
+        <div class="child1">
             <div class="titleAndButton">
-                <h1>Puzzle</h1>
+                <h1 id="puzzle">Puzzle</h1>
                 <div id="difficulty" class="difficulty">
-                    <h3>selecione a dificuldade:</h3>
+                    <h3>Selecione a Dificuldade:</h3>
                     <br>
                     <input type="radio" name="game-difficulty" id="game-difficulty-img" value='4' checked>
                     <label>Imagem</label>
@@ -40,13 +38,13 @@
                     </select>
                 </div>
                 <button id="game" class="game">Novo Jogo</button>
-                <br>
-                <br>
+            </div>
+            <div id="result" class="result">
+                Tempo: <span class="time-text"></span>
+                clicks: <span class="move-text"></span>
             </div>
         </div>
-
-        <!-- slide de imagens -->
-        <div class="slide" id="slide">
+        <div class="slide">
             <h2 class="slide-titulo" id="slide-titulo">Imagens Disponiveis para Jogar</h2>
             <div class="slideshow-container" id="slideshow-container">
                 <div class="mySlides fade">
@@ -76,13 +74,11 @@
             </div>
         </div>
 
-        <!-- Jogo tabuleiro -->
         <div class="child2">
+            <!-- Jogo -->
             <div class="field" id="field">
             </div>
         </div>
-
-        <!-- imagem de referencia -->
         <div id="full-image-container" class="img-ref">
             <img id="img-1.png" src="/img/img-1.png" alt="Imagem completa" style="display: none;">
             <img id="img-2.png" src="/img/img-2.png" alt="Imagem completa" style="display: none;">
@@ -92,17 +88,6 @@
             <img id="img-6.png" src="/img/img-6.png" alt="Imagem completa" style="display: none;">
         </div>
     </div>
-
-    <!-- resultado -->
-    <div id="result" class="result">
-        Tempo: <span class="time-text"></span>
-        <br>
-        clicks: <span class="move-text"></span>
-        <br>
-        <button id="resolver" class="game">Resolver Automaticamente</button>
-        <button id="game" class="game">Novo Jogo</button>
-    </div>
-
     <script src="app.js" defer></script>
 </body>
 
