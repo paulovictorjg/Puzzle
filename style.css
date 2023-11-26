@@ -10,6 +10,17 @@
   --main-border-color: #535353;
 }
 
+  body {
+    background-color: rgb(143, 215, 211);
+  }
+
+.parent {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  margin: 1em;
+}
+
 .field {
   width: 400px;
   height: 400px;
@@ -17,12 +28,6 @@
   position: relative;
   display: none;
   border: 1px solid #535353;
-}
-
-.parent {
-  display: inline-block;
-  margin: 1em;
-  flex-direction: row; /* Os itens são dispostos em uma linha */
 }
 
 .cell {
@@ -53,6 +58,10 @@
   font-size: 1.6em;
   box-sizing: border-box;
 }
+
+/* apos iniciar o game {*/
+
+/* } */
 
 .child2 {
   margin-top: 2em;
@@ -118,8 +127,10 @@ h1 {
 }
 
 .slide-titulo {
-  font-size: 2em;
-  margin: 1em;
+  margin-top: 0;
+  font-size: 1.5em;
+  text-align: center;
+  margin: 0em 0em 1em 0em;
 }
 
 .slideshow-container {
@@ -129,10 +140,6 @@ h1 {
   border-radius: 15px;
   box-sizing: border-box;
   overflow: hidden;
-}
-
-.mySlides {
-  display: none;
 }
 
 .fade {

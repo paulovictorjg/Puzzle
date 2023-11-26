@@ -3,6 +3,8 @@ let newButtonClicked = true;
 newGameButton.onclick = start;
 let moveCounter = 0;
 let gameTime = 0;
+let dif;
+document.getElementById('full-image-container').style.display = 'none';
 
 function start() {
   let dif;
@@ -19,14 +21,16 @@ function start() {
     newGameButton.innerHTML = 'Restart';
     difficulty.style.display = 'none';
     result.style.display = 'block';
-    document.getElementById('slide-titulo').style.display = 'none';
-    document.getElementById('slideshow-container').style.display = 'none';
+    document.getElementById('slide').style.display = 'none';
+    document.getElementById('child1').style.display = 'none';
+    document.getElementById('result').style.display = 'block';
+
   } else {
     window.location.reload();
   }
 }
 function startGame(dif) {
-document.getElementById('full-image-container').style.display = 'block';
+  document.getElementById('full-image-container').style.display = 'block';
   const field = document.querySelector('.field');
   const cellSize = 100;
   const cells = [];
@@ -137,3 +141,71 @@ function showSlides() {
   slides[slideIndex - 1].style.display = 'block';
   setTimeout(showSlides, 3000);
 }
+function encontrarPosicaoCorreta(valor) {
+  // Percorra todas as células do quebra-cabeça resolvido
+  for (let i = 0; i < dif * dif; i++) {
+    if (cells[i].value === valor) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+function moverParaPosicaoCorreta(index, posicaoCorreta) {
+  // Troque a peça na posição 'index' com a peça na 'posicaoCorreta'
+  const temp = cells[index];
+  cells[index] = cells[posicaoCorreta];
+  cells[posicaoCorreta] = temp;
+
+  // Atualize a posição das peças no DOM
+  cells[index].element.style.left = `${cells[index].left * cellSize}px`;
+  cells[index].element.style.top = `${cells[index].top * cellSize}px`;
+  cells[posicaoCorreta].element.style.left = `${
+    cells[posicaoCorreta].left * cellSize
+  }px`;
+  cells[posicaoCorreta].element.style.top = `${
+    cells[posicaoCorreta].top * cellSize
+  }px`;
+}
+
+function encontrarPosicaoCorreta(valor) {
+  // Percorra todas as células do quebra-cabeça resolvido
+  for (let i = 0; i < dif * dif; i++) {
+    if (cells[i].value === valor) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+function moverParaPosicaoCorreta(index, posicaoCorreta) {
+  // Troque a peça na posição 'index' com a peça na 'posicaoCorreta'
+  const temp = cells[index];
+  cells[index] = cells[posicaoCorreta];
+  cells[posicaoCorreta] = temp;
+
+  // Atualize a posição das peças no DOM
+  cells[index].element.style.left = `${cells[index].left * cellSize}px`;
+  cells[index].element.style.top = `${cells[index].top * cellSize}px`;
+  cells[posicaoCorreta].element.style.left = `${
+    cells[posicaoCorreta].left * cellSize
+  }px`;
+  cells[posicaoCorreta].element.style.top = `${
+    cells[posicaoCorreta].top * cellSize
+  }px`;
+}
+
+function resolverAutomaticamente() {
+  let dif;
+  // Percorra todas as peças do quebra-cabeça
+  for (let i = 0; i < dif * dif; i++) {
+    // Encontre a posição correta da peça atual no quebra-cabeça resolvido
+    const posicaoCorreta = encontrarPosicaoCorreta(cells[i].value);
+
+    // Mova a peça para a posição correta
+    moverParaPosicaoCorreta(i, posicaoCorreta);
+  }
+}
+
+let resolverButton = document.getElementById('resolver');
+resolverButton.onclick = resolverAutomaticamente;
