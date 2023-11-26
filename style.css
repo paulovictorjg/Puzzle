@@ -137,8 +137,9 @@ h1 {
 }
 
 .sound h2{
-  margin-left: 1em;
+  text-align: center;
 }
+
 @keyframes fade {
   from {
     opacity: 0.4;
