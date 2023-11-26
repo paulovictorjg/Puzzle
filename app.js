@@ -3,7 +3,6 @@ let newButtonClicked = true;
 newGameButton.onclick = start;
 let moveCounter = 0;
 let gameTime = 0;
-document.getElementById('full-image-container').style.display = 'none';
 
 function start() {
   let dif;
@@ -28,7 +27,6 @@ function start() {
 }
 function startGame(dif) {
   document.getElementById('full-image-container').style.display = 'block';
-  document.getElementById('puzzle').style.display = 'none';
   const field = document.querySelector('.field');
   const cellSize = 100;
   const cells = [];
@@ -120,8 +118,6 @@ function startResults() {
   const gameInterval = setInterval(() => {
     timeContainer.innerHTML = '' + ++gameTime;
   }, 1000);
-  document.getElementById('child1').style.display = 'none';
-  document.getElementById('game').style.display = 'block';
 }
 
 let slideIndex = 0;
