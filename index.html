@@ -91,12 +91,30 @@
             <img id="img-6.png" src="/img/img-6.png" alt="Imagem completa" style="display: none;">
         </div>
     </div>
-    <div class="sound" style=" bottom: 0; width: 100%;">
+    <div class="sound">
+        <div class="player">
+            <audio id="audioPlayer" preload="auto" autobuffer>
+                <source src="faixa1.mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+            <button id="prev">Faixa Anterior</button>
+            <button id="toggle">Play</button>
+            <button id="next">Próxima Faixa</button>
+            <p id="currentTrack"></p>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+            <output id="volume-output">100</output>
+            <input type="range" id="seek-slider" min="0" max="100" value="0">
+        </div>
+
+    </div>
+
+    <!--spotfy so toca previa das musicas
+        <div class="sound" style=" bottom: 0; width: 100%;">
         <h2>De Play e relaxe 😎🎵
         </h2>
         <br>
         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2hWJXVXocSOIFe0HKxZS9s?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
+    </div> -->
     <script src="app.js" defer></script>
 </body>
 

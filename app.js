@@ -3,6 +3,7 @@ let newButtonClicked = true;
 newGameButton.onclick = start;
 let moveCounter = 0;
 let gameTime = 0;
+document.getElementById('full-image-container').style.display = 'none';
 
 function start() {
   let dif;
@@ -136,3 +137,98 @@ function showSlides() {
   slides[slideIndex - 1].style.display = 'block';
   setTimeout(showSlides, 3000);
 }
+
+var audioPlayer = document.getElementById('audioPlayer');
+var tracks = [
+  '/sound/All_We_Have_feat_Lastlings.mp3',
+  '/sound/Out_of_Time.mp3',
+  '/sound/Do_You_Want_Me.mp3',
+  '/sound/I_Want_You.mp3',
+  '/sound/Somebody_Loves_You_-_Paul_Thomas_Remix.mp3',
+  '/sound/Naama.mp3',
+  '/sound/Close_Eyes.mp3',
+  '/sound/Violet_Night.mp3',
+  '/sound/What_Is_True.mp3',
+  '/sound/Vergangenheit.mp3',
+  '/sound/Nocturnes.mp3',
+  '/sound/I_Want_You__feat__braev_.mp3',
+  '/sound/Forbidden.mp3',
+  '/sound/Makeba.mp3',
+  '/sound/Day_One_-_Interstellar_Remix.mp3',
+  '/sound/Sunbeam.mp3',
+  '/sound/Calling.mp3',
+  '/sound/Should_Have_Seen_It_Coming.mp3',
+  '/sound/Like_This.mp3',
+  '/sound/Danielle_smile_on_my_face_.mp3',
+  '/sound/Rubicon_-_Yotto_Remix.mp3',
+  '/sound/I_Need_You.mp3',
+  '/sound/I_m_Dreaming.mp3',
+  '/sound/PARKOUR.mp3',
+  '/sound/Essence.mp3',
+  '/sound/Beauty_And_The_Beast.mp3',
+  '/sound/Ray_Of_Solar.mp3',
+  '/sound/Paranoid_-_NEW_Mix.mp3',
+  '/sound/Kochi.mp3',
+  '/sound/Coming_for_You.mp3',
+  '/sound/Cool.mp3',
+  '/sound/Aftertime.mp3',
+  '/sound/Encore.mp3',
+  '/sound/Oscillate.mp3',
+  '/sound/Upswing.mp3',
+  '/sound/Take_Our_Time.mp3',
+  '/sound/Bleu_better_with_time_.mp3',
+  '/sound/A_Love_That_Never_Happened_-_Rylan_Taggart_Remix.mp3',
+];
+var currentTrack = 0;
+var isPlaying = false;
+
+document.getElementById('prev').addEventListener('click', function () {
+  currentTrack--;
+  if (currentTrack < 0) currentTrack = tracks.length - 1;
+  audioPlayer.src = tracks[currentTrack];
+  audioPlayer.play();
+  document.getElementById('currentTrack').innerText = 'Tocando agora: ' + tracks[currentTrack];
+});
+
+document.getElementById('toggle').addEventListener('click', function () {
+  if (isPlaying) {
+    audioPlayer.pause();
+    this.innerText = 'Play';
+  } else {
+    audioPlayer.play();
+    this.innerText = 'Pause';
+  }
+  isPlaying = !isPlaying;
+});
+
+document.getElementById('next').addEventListener('click', function () {
+  currentTrack++;
+  if (currentTrack >= tracks.length) currentTrack = 0;
+  audioPlayer.src = tracks[currentTrack];
+  audioPlayer.play();
+  document.getElementById('currentTrack').innerText = 'Tocando agora: ' + tracks[currentTrack];
+});
+
+document.getElementById('volume-slider').addEventListener('input', function () {
+  audioPlayer.volume = this.value;
+  document.getElementById('volume-output').value = Math.round(this.value * 100);
+});
+
+audioPlayer.src = tracks[currentTrack];
+audioPlayer.play();
+document.getElementById('currentTrack').innerText = 'Tocando agora: ' + tracks[currentTrack];
+
+audioPlayer.addEventListener('timeupdate', function () {
+  var progress = document.getElementById('seek-slider');
+  progress.value = audioPlayer.currentTime / audioPlayer.duration * 100;
+});
+
+audioPlayer.addEventListener('ended', function () {
+  currentTrack++;
+  if (currentTrack == tracks.length) {
+    currentTrack = 0;
+  }
+  audioPlayer.src = tracks[currentTrack];
+  audioPlayer.play();
+  document.getElementById('currentTrack').innerText = 'Tocando agora: ' + tracks[currentTrack];
+});
