@@ -22,12 +22,12 @@
 }
 
 .field {
-  width: 400px;
-  height: 400px;
+  width: 403px;
+  height: 402px;
   border-radius: 10px;
   position: relative;
   display: none;
-  border: 1px solid #535353;
+  border: 0px solid #535353;
 }
 
 .cell {
@@ -161,6 +161,35 @@ display: none;
   border-radius: 5px;
   padding: 5px 10px;
 }
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: transparent; /* Remove o fundo */
+}
+
+footer p {
+  border-bottom: 1px solid #000; /* Adiciona uma linha de separação */
+  padding: 10px;
+  font-size: 1.2em;
+}
+
+footer p:last-child {
+  border-bottom: none; /* Remove a linha de separação do último parágrafo */
+}
+a, a:visited, a:hover, a:focus, a:active {
+  color: inherit; /* herda a cor do elemento pai */
+  text-decoration: none; /* remove o sublinhado */
+}
+
+
+/* footer , p{
+  display: inline-block;
+  text-align: center; 
+  padding: 10px;
+  font-size: 1em;
+  text-decoration: none;
+} */
 
 @keyframes fade {
   from {

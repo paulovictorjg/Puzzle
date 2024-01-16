@@ -4,7 +4,6 @@ newGameButton.onclick = start;
 let moveCounter = 0;
 let gameTime = 0;
 document.getElementById('full-image-container').style.display = 'none';
-
 function start() {
   let dif;
   if (document.getElementById('game-difficulty-img').checked) {
@@ -22,11 +21,46 @@ function start() {
     result.style.display = 'block';
     document.getElementById('slide-titulo').style.display = 'none';
     document.getElementById('slideshow-container').style.display = 'none';
+    document.querySelector('.field').style.display = 'block';
+    document.querySelector('.field').style.border = '1px solid';
+    document.getElementById('rodape').style.display = 'none';
   } else {
-    window.location.reload();
+    // window.location.reload();
+    resetGame();
+    function resetGame() {
+      // Reseta todas as variáveis e estados para seus valores iniciais
+      newButtonClicked = true;
+      moveCounter = 0;
+      gameTime = 0;
+      document.getElementById('full-image-container').style.display = 'none';
+      newGameButton.innerHTML = 'Start';
+      difficulty.style.display = 'block';
+      result.style.display = 'none';
+      document.getElementById('slide-titulo').style.display = 'block';
+      document.getElementById('slideshow-container').style.display = 'block';
+      document.querySelector('.field').style.display = 'none'; 
+    document.getElementById('rodape').style.display = 'block';
+
+
+      // Limpa o campo de jogo
+      const field = document.querySelector('.field');
+      while (field.firstChild) {
+        field.removeChild(field.firstChild);
+      }
+    }
+
+    // Altera a função start para chamar resetGame em vez de recarregar a página
+    function start() {
+      // ...
+      if (newButtonClicked) {
+        // ...
+      } else {
+        resetGame();
+      }
+    }
   }
 }
-function startGame(dif) {
+function startGame(dif, image) {
   document.getElementById('full-image-container').style.display = 'block';
   const field = document.querySelector('.field');
   const cellSize = 100;
@@ -48,7 +82,6 @@ function startGame(dif) {
       } else {
         console.log('Elemento não encontrado: ' + selectedImageId);
       }
-
       const x = ((value - 1) % dif) * cellSize;
       const y = Math.floor((value - 1) / dif) * cellSize;
       cell.style.backgroundImage = selectedImage;
@@ -120,10 +153,8 @@ function startResults() {
     timeContainer.innerHTML = '' + ++gameTime;
   }, 1000);
 }
-
 let slideIndex = 0;
 showSlides();
-
 function showSlides() {
   let i;
   let slides = document.getElementsByClassName('mySlides');
@@ -137,10 +168,6 @@ function showSlides() {
   slides[slideIndex - 1].style.display = 'block';
   setTimeout(showSlides, 3000);
 }
-
-
-
-
 
 // var audioPlayer = document.getElementById('audioPlayer');
 // var tracks = [

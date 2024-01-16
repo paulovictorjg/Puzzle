@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="windows-1251">
     <title>Jogo de Puzzle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -36,6 +37,9 @@
                         <option value="5">5x5</option>
                         <option value="6">6x6</option>
                     </select>
+                    <br>
+                    <br>
+                    <input type="file" id="userImageUpload" accept=".jpg, .jpeg, .png">
                 </div>
                 <button id="game" class="game">Novo Jogo</button>
                 <br>
@@ -76,7 +80,6 @@
                 </div>
             </div>
         </div>
-
         <div class="child2">
             <!-- Jogo -->
             <div class="field" id="field">
@@ -106,13 +109,25 @@
             <input type="range" id="seek-slider" min="0" max="100" value="0">
         </div> -->
     </div>
-        <div class="sound" style=" bottom: 0; width: 100%;">
-        <h2>De Play e relaxe 😎🎵
-        </h2>
+    <div class="sound" style=" bottom: 0; width: 100%;">
         <br>
         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2hWJXVXocSOIFe0HKxZS9s?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
     <script src="app.js" defer></script>
+    <script src="input.js" defer></script>
+
 </body>
+<footer id="rodape">
+    <p><a href="https://wa.me/5547996474407" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp: +55 (47) 99647-4407
+        </a></p>
+    <p><a href="https://github.com/paulovictorjg" target="_blank">
+            <i class="fab fa-github"></i> GitHub: paulovictorjg
+        </a></p>
+    <p>
+        <i class="fas fa-bullhorn"></i> Nos siga para mais projetos!
+    </p>
+</footer>
+
 
 </html>
