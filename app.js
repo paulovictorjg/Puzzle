@@ -1,4 +1,3 @@
-// ESTA VERSAO NAO CARREGA A IMAGEM CERTA MAS NAO ATUALIZA A PAGINA TODA 
 let newGameButton = document.getElementById('game');
 let newButtonClicked = true;
 newGameButton.onclick = start;
@@ -53,9 +52,10 @@ function startGame(dif, image) {
   const field = document.querySelector('.field');
   const cellSize = 100;
   const cells = [];
-  const numbers = [...Array(dif * dif - 1).keys()].sort(
-    () => Math.random() - 0.5
-  );
+let numbers = [...Array(dif * dif - 1).keys()].map(n => n + 1);
+do {
+  numbers.sort(() => Math.random() - 0.5);
+} while (!isSolvable(numbers, dif));
   const imageSelection = document.getElementById('image-selection');
   const selectedImage = 'url("./img/' + imageSelection.value + '")';
   for (let i = 0; i <= dif * dif - 2; i++) {
@@ -155,4 +155,23 @@ function showSlides() {
   }
   slides[slideIndex - 1].style.display = 'block';
   setTimeout(showSlides, 3000);
+}
+
+function isSolvable(numbers, size) {
+  let inversions = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = i + 1; j < numbers.length; j++) {
+      if (numbers[i] > numbers[j]) inversions++;
+    }
+  }
+  if (size % 2 !== 0) {
+    return inversions % 2 === 0;
+  } else {
+    const blankRowFromBottom = size - 1; // posição da célula vazia
+    if (blankRowFromBottom % 2 === 0) {
+      return inversions % 2 !== 0;
+    } else {
+      return inversions % 2 === 0;
+    }
+  }
 }
